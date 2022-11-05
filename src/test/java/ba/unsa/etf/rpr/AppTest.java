@@ -2,7 +2,9 @@ package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.*;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
+import java.util.Map;
 import java.util.Set;
 
 import static ba.unsa.etf.rpr.Grad.*;
@@ -62,6 +64,22 @@ class ImenikTest {
         assertEquals("033/123-156,033/123-456,033/123-656,", result);
     }
 
+    @Test
+    public void testMockito(){
+        Map<String, String> imenikMock = Mockito.mock(Map.class);
+        imenikMock.put("Bosna", "Sarajevo");
+        imenikMock.put("Srbija", "Beograd");
+        imenikMock.put("Hrvatska", "Zagreb");
 
+        Mockito.verify(imenikMock).put("Bosna", "Sarajevo");
+        Mockito.verify(imenikMock).put("Srbija", "Beograd");
+        Mockito.verify(imenikMock).put("Hrvatska", "Zagreb");
+
+        Mockito.when(imenikMock.get("Bosna")).thenReturn("Beograd");
+        assertEquals("Beograd", imenikMock.get("Bosna"));
+
+        Mockito.when(imenikMock.get("Hrvatska")).thenReturn("Mi smo najjaci");
+        assertEquals("Mi smo najjaci", imenikMock.get("Hrvatska"));
+    }
 
 }
