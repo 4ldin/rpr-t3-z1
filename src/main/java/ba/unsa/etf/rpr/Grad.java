@@ -1,12 +1,12 @@
 package ba.unsa.etf.rpr;
 
 public enum Grad {
-    Sarajevo("033"), Bihac("037"), Gorazde("038");
+    SARAJEVO("033"), Bihac("037"), Gorazde("038"), Konjic("036"), Breza("032");
     private String broj;
     Grad(String s) {
         this.broj = s;
     }
     public String ispisi(){
-        return this.toString();
+        return broj;
     }
 }
